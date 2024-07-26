@@ -14,7 +14,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: growing-plants-post-diseaseIdentifier-v1
-      Handler: disease_identifier.handler
+      Handler: disease_identifier.lambda_handler
       Runtime: python3.12
       CodeUri: lambdas/
       MemorySize: 128
