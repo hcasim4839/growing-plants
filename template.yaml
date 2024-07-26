@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: API to help aid plants
+
+Resources:
+  AidPlantApi:
+    Type: 'AWS::Serverless::Api'
+    Properties: 
+      Name: 'aid-plant-api'
+      StageName: 'dev'
+      EndpointConfiguration: REGIONAL # or EDGE or PRIVATE
+
+  MyLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: growing-plants-post-diseaseIdentifier-v1
+      Handler: disease_identifier.handler
+      Runtime: python3.12
+      CodeUri: lambdas/
+      MemorySize: 128
+      Timeout: 10
+      Events:
+        V1:
+          Type: Api
+          Properties:
+            RestApiId: !Ref AidPlantApi
+            Path: /api/v1/plants/diseaseIdentifier
+            Method: POST
