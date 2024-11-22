@@ -1,0 +1,20 @@
+name: template-validator
+on: 
+  push:
+    paths:
+      - 'template.yaml'
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        run: actions/checkout@v3
+      
+      - name: Set up AWS SAM CLI
+        uses: aws-actions/setup-sam-cli@v2
+        with:
+          version: 'latest'
+      
+      - name: Validate SAM template
+        run: sam validate
