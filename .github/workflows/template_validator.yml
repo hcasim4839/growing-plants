@@ -8,13 +8,16 @@ jobs:
   syntax:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Code
-        run: actions/checkout@v3
-      
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up AWS SAM CLI
       - name: Set up AWS SAM CLI
         uses: aws-actions/setup-sam-cli@v2
         with:
           version: 'latest'
-      
+
+      # Step 3: Validate the SAM template
       - name: Validate SAM template
         run: sam validate
