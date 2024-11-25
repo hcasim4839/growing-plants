@@ -26,4 +26,4 @@ jobs:
         run: |
           sam validate -t template.yaml --lint
         env:
-        SAM_CLI_TELEMETRY: 0
+          SAM_CLI_TELEMETRY: 0
