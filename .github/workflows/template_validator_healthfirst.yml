@@ -11,6 +11,13 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      # Checking current directory 
+      - name: Check working directory
+        run: pwd
+      # Checking the list of repos
+      - name: List repository files
+        run: ls -alh
+
       # Use the fetched credentials to configure AWS CLI for your tests
       - name: Configure AWS credentials via oidc
         uses: aws-actions/configure-aws-credentials@v4
