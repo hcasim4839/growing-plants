@@ -21,4 +21,4 @@ jobs:
       # Run sam validate
       - name: SAM Validate
         run: |
-          sam validate
+          sam validate -t template.yaml --linting
