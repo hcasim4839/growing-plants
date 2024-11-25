@@ -11,6 +11,10 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      # Giving access to checkout files to Github Actions
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       # Checking current directory 
       - name: Check working directory
         run: pwd
