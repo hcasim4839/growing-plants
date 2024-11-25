@@ -26,4 +26,4 @@ Resources:
             RestApiId: !Ref AidPlantApi
             Path: /api/v1/plants/diseaseIdentifier
             Method: POST
-            
+          
