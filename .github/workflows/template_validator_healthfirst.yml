@@ -1,7 +1,8 @@
-name: Template Validator
+name: HF Template Validator
 on:
-  pull_request:
-    branches: [ main ]
+  push:
+    paths:
+      - 'template.yaml'
 
 jobs:
   sam-validate-build-test:
