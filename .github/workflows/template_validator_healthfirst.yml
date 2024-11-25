@@ -14,7 +14,6 @@ jobs:
       # Checking the list of repos
       - name: List repository files
         run: ls -alh
-
       # Use the fetched credentials to configure AWS CLI for your tests
       - name: Configure AWS credentials via oidc
         uses: aws-actions/configure-aws-credentials@v4
@@ -23,6 +22,8 @@ jobs:
           aws-region: us-east-1
       # Next step is to download SAM CLI
       # Run sam validate
-      - name: SAM Validate
+      - name: Run SAM Validate
         run: |
-          sam validate -t template.yaml --lint SAM_CLI_TELEMETRY=0
+          sam validate -t template.yaml --lint
+        env:
+        SAM_CLI_TELEMETRY: 0
