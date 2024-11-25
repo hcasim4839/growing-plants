@@ -11,13 +11,6 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      # Giving access to checkout files to Github Actions
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Checking current directory 
-      - name: Check working directory
-        run: pwd
       # Checking the list of repos
       - name: List repository files
         run: ls -alh
@@ -32,4 +25,4 @@ jobs:
       # Run sam validate
       - name: SAM Validate
         run: |
-          sam validate -t template.yaml --lint
+          sam validate -t template.yaml --lint SAM_CLI_TELEMETRY=0
