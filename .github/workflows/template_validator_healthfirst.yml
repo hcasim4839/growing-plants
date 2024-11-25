@@ -1,0 +1,23 @@
+name: Template Validator
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sam-validate-build-test:
+    permissions: 
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      # Use the fetched credentials to configure AWS CLI for your tests
+      - name: Configure AWS credentials via oidc
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{vars.AWS_OIDC_ARN}}
+          aws-region: us-east-1
+      # Next step is to download SAM CLI
+      # Run sam validate
+      - name: SAM Validate
+        run: |
+          sam validate
